@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Providers } from "@/store/PRoviders";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -24,11 +25,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="es">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Providers> {/* aqui no agregue directamente el provider porque debe ser del lado del cliente, por lo que cree un HOC */}
+
         {children}
+        </Providers>
       </body>
     </html>
   );
